@@ -17,3 +17,8 @@ def enroll_course(request, course_id):
     course = Course.objects.get(id=course_id)
     Enrollment.objects.get_or_create(user=request.user, course=course)
     return redirect('course_list')  # Redirige de nuevo a la lista de cursos
+
+@login_required
+def enrolled_courses(request):
+    courses = Enrollment.objects.filter(user=request.user).select_related('course')
+    return render(request, 'courses/enrolled_courses.html', {'courses': courses})

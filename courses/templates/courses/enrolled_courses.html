@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cursos</title>
+    <link rel="stylesheet" href="{% static 'css/courses.css' %}">
+</head>
+<body>
+    <h1>Mis Cursos Inscritos</h1>
+
+    {% if courses %}
+        <div class="course-list">
+            {% for enrollment in courses %}
+            <div class="course-card">
+                <h2>{{ enrollment.course.title }}</h2>
+                <p>{{ enrollment.course.description }}</p>
+                <p><strong>Duración:</strong> {{ enrollment.course.duration }}</p>
+                <p><strong>Precio:</strong> {{ enrollment.course.price }} USD</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No estás inscrito en ningún curso aún.</p>
+        <p><a href="{% url 'course_list' %}" class="btn">Ver Cursos Disponibles</a></p>
+    {% endif %}
+</body>
+</html>
