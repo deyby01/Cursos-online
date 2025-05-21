@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Course
+from .models import Course, Enrollment
 
 # Create your views here.
 @login_required
@@ -11,3 +11,9 @@ def course_list(request):
     courses = Course.objects.all() #Obtener todos los cursos
     
     return render(request, 'courses/course_list.html', {'courses': courses}) #Pasar los cursos a la plantilla
+
+@login_required
+def enroll_course(request, course_id):
+    course = Course.objects.get(id=course_id)
+    Enrollment.objects.get_or_create(user=request.user, course=course)
+    return redirect('course_list')  # Redirige de nuevo a la lista de cursos

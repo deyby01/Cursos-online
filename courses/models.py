@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Course(models.Model):
@@ -12,3 +13,12 @@ class Course(models.Model):
     
     def __str__(self):
         return self.title# Mostrar el título en el panel de administración
+    
+
+class Enrollment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Usuario inscrito
+    course = models.ForeignKey('Course', on_delete=models.CASCADE)  # Curso al que se inscribe
+    enrolled_at = models.DateTimeField(auto_now_add=True)  # Fecha de inscripción
+
+    def __str__(self):
+        return f"{self.user.username} - {self.course.title}"

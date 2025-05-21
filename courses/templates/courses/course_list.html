@@ -17,6 +17,15 @@
             <p>{{ course.description }}</p>
             <p><strong>Duración:</strong> {{ course.duration }}</p>
             <p><strong>Precio:</strong> {{ course.price }} USD</p>
+
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'enroll_course' course.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-enroll">Inscribirse</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}">Inicia sesión para inscribirte</a></p>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
