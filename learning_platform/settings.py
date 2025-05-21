@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/courses/'
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = '/users/login/'
 

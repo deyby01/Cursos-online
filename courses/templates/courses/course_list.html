@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Disponibles</title>
+    <link rel="stylesheet" href="{% static 'css/courses.css' %}">
+</head>
+<body>
+    <h1>Explora Nuestros Cursos</h1>
+
+    <div class="course-list">
+        {% for course in courses %}
+        <div class="course-card">
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.description }}</p>
+            <p><strong>Duración:</strong> {{ course.duration }}</p>
+            <p><strong>Precio:</strong> {{ course.price }} USD</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

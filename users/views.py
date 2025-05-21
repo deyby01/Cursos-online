@@ -27,7 +27,7 @@ def user_login(request):
             if user is not None:
                 login(request, user) #Inicia sesión
                 
-                return redirect('home') # Redirije a la pagina principal
+                return redirect('course_list') # Redirije a la pagina cursos
     
     else:
         form = AuthenticationForm()
