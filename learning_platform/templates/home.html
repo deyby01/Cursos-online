@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos en Línea</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="hero">
+        <h1>Transforma tu futuro con aprendizaje en línea</h1>
+        <p>Descubre cursos innovadores y domina nuevas habilidades desde cualquier lugar.</p>
+        <div class="buttons">
+            <a href="{% url 'login' %}" class="btn">Iniciar Sesión</a>
+            <a href="{% url 'register' %}" class="btn">Registrarse</a>
+        </div>
+    </header>
+
+    <section class="featured-courses">
+        <h2>Cursos Destacados</h2>
+        <div class="course-list">
+            <div class="course-card">
+                <img src="{% static 'img/python.jpg' %}" alt="Curso 1">
+                <h3>Python desde Cero</h3>
+                <p>Aprende a programar con Python y crea tus primeras aplicaciones.</p>
+            </div>
+            <div class="course-card">
+                <img src="{% static 'img/Diseño_ui-ux.png' %}" alt="Curso 2">
+                <h3>Diseño UI/UX Moderno</h3>
+                <p>Descubre cómo crear interfaces atractivas y funcionales.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cursos en Línea. Todos los derechos reservados.</p>
+        <p>Desarrollado por <strong>Deyby.CP</strong></p>
+    </footer>
+</body>
+</html>
